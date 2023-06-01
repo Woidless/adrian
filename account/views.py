@@ -11,6 +11,16 @@ from .send_email import send_confirmation_email
 # django
 from django.contrib.auth import get_user_model, authenticate, logout, login
 
+
+# 6
+from django.shortcuts import render
+
+def index(request):
+    return render(request, "index.html")
+
+def login(request):
+    return render(request, "login.html")
+
 # 
 User = get_user_model()
 

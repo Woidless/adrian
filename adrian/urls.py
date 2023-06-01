@@ -5,6 +5,9 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+# 6
+from account import views
+
 # swagger
 schema_view = get_schema_view(
    openapi.Info(
@@ -32,5 +35,9 @@ urlpatterns = [
    path('api/area/', include('area.urls')),
    # connact
    path('api/connect/', include('connect.urls')),
+
+
+   path('', views.index),
+   path('login', views.login)
 
 ]

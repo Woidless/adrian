@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block page_title %}{% endblock page_title %}</title>
+  <meta name="keywords" content="HTML5 Template">
+  <meta name="description" content="Molla - Bootstrap eCommerce Template">
+  <meta name="author" content="p-themes">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icons/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icons/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/icons/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/icons/site.html' %}">
+  <link rel="mask-icon" href="{% static 'images/icons/safari-pinned-tab.svg' %}" color="#666666">
+  <link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}">
+  <meta name="apple-mobile-web-app-title" content="Molla">
+  <meta name="application-name" content="Molla">
+  <meta name="msapplication-TileColor" content="#cc9966">
+  <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  {% block meta_tags %}{% endblock meta_tags %}
+  <!-- Favicons -->
+
+  {% include 'blocks/links.html' %}
+
+  {% block custom_css %}
+  {% endblock custom_css %}
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- ======= Header ======= -->
+    {% include "blocks/header.html" %}
+    <!-- End Header -->
+
+    <!-- ======= Block Content ======= -->
+    {% block content %} {% endblock content %}
+    <!-- End Block Content -->
+
+    <!-- ======= Footer ======= -->
+    {% include 'blocks/footer.html' %}
+    <!-- End Footer -->
+  </div>
+  <!-- ======= scripts ======= -->
+  {% include 'blocks/scripts.html' %}
+  <!-- End scripts -->
+
+  {% block custom_js%}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function changeWeek() {
+      console.log("Работает");
+      $.ajax({                       // initialize an AJAX request
+        url: '{% url "cart_page2" %}',// set the url of the request (= localhost:8000/load-courses/)
+        success: function (data) {   // data is the return of the load_courses view function
+          $("#droping").html(data);  // replace the contents of the course input with the data that came from the server
+        }
+      });
+    }
+    var productImage = document.getElementById('product-image1');
+    console.log("Количество изображений: " + productImage.length);
+    var imageWidth = productImage.naturalWidth; // Ширина изображения
+    var imageHeight = productImage.naturalHeight; // Высота изображения
+    console.log("Ширина изображения: " + imageWidth);
+    console.log("Высота изображения: " + imageHeight);
+    
+  </script>
+  
+  {% endblock custom_js%}
+
+</body>
+
+</html>

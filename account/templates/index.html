@@ -1,0 +1,305 @@
+
+{% load static %}
+
+<html>
+<head>
+  <title>Интернет-провайдер</title>
+
+{%block custom_css%}
+
+<link rel="stylesheet"  href="{% static '/css/style.css' %}">
+
+{%endblock custom_css%}
+
+
+</head>
+
+<body>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="company-name">CRM-system</h1>
+        <a href="login" class="login-button">Личный кабинет</a>
+      </div>
+      <!-- ШАБЛОН ДЛЯ КНОПКИ ПОДКЛЮЧЕНИЯ -->
+      <div id="popup" class="popup">
+        <div class="popup-inner">
+          <form>
+            <div class="form-input">
+              <label for="name" style="font-weight: 600;">Тариф: УЛЬТРА ВЫГОДНЫЙ</label>
+              <label for="name">ФИО:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-input">
+              <label for="phone">Номер телефона:</label>
+              <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-input">
+              <label for="email">Почтовый ящик:</label>
+              <input type="text" id="email" name="email" required>
+            </div>
+            <div class="form-input">
+              <label for="adress">Адрес:</label>
+              <input type="text" id="adress" name="adress" required>
+            </div>
+            <div class="form-input">
+              <label for="message">Сообщение</label>
+              <textarea id="message" name="message"> </textarea>
+            </div>
+
+            <input type="submit" value="Отправить">
+            <input type="submit" value="Закрыть" class="close-button" onclick="closePopup()">
+
+          </form>
+        </div>
+      </div>
+
+      <!-- СЛАЙДЕР -->
+      <div class="carousel">
+        <div class="carousel-container">
+          <div class="carousel-item">
+            <img src="{% static 'img/1' %}" alt="Новость 1">
+          </div>
+          <div class="carousel-item">
+            <img src="img/2.jpg" alt="Новость 2">
+          </div>
+          <div class="carousel-item">
+            <img src="img/3.jpg" alt="Новость 3">
+          </div>
+        </div>
+      </div>
+    
+      <div class="slider">
+        <button onclick="prevSlide()">&#10094;</button>
+        <button onclick="nextSlide()">&#10095;</button>
+      </div>
+
+      <!-- ТАРИФЫ -->
+      <div class="rate-group">
+        <h2 class="rate-group__title">ИНТЕРНЕТ</h2>
+        <ul class="rate-group__list">
+          <br>
+          <li class="rate-group__item rate">
+            <h3 class="rate__title">
+              <span> УЛЬТРА ВЫГОДНЫЙ </span>
+            </h3>
+            <div class="rate__info" style="padding-left: 50px; padding-right: 50px; padding-top: 10px">
+              <div class="rate__info-item">
+                <img src="{% static 'svg/' %}css/internet_speed.svg" height="50px" width="50px">
+                <span> до 200 Мбит/с </span>
+              </div>
+              <div class="rate__info-item">
+                <img src="css/tv.svg" height="50px" width="50px">
+                <span> более 300 TV-каналов </span>
+              </div>
+              <div class="rate__info-item">
+                <img src="css/yt.svg" height="50px" width="50px">
+                <span> Онлайн кинотеатр + YouTube </span>
+              </div>
+              <div class="rate__info-item rate__info-price">
+                <span class="rate__info-price--bold"> 1999с в месяц </span>
+              </div>
+              <ul class="rate__info-more">
+                <li class="rate__info-list-item">
+                  Скорость по зоне МИР до
+                  200 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Скорость по зоне KG до
+                  200 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Тарифный план предоставляется только для физических лиц;
+                </li>
+                <li class="rate__info-list-item">
+                  Условия оплаты – предоплата;
+                </li>
+                <li>
+                  <button class="button" onclick="openPopup('Тариф 1')">Подключиться</button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <ul class="rate-group__list">
+          <br>
+          <li class="rate-group__item rate">
+            <h3 class="rate__title">
+              <span> ВЫГОДНЫЙ </span>
+            </h3>
+            <div class="rate__info" style="padding-left: 50px; padding-right: 50px; padding-top: 10px">
+              <div class="rate__info-item">
+                <img src="css/internet_speed.svg" height="50px" width="50px">
+                <span> до 150 Мбит/с </span>
+              </div>
+              <div class="rate__info-item">
+                <img src="css/tv.svg" height="50px" width="50px">
+                <span> более 200 TV-каналов </span>
+              </div>
+              <div class="rate__info-item">
+                <img src="css/yt.svg" height="50px" width="50px">
+                <span> YouTube </span>
+              </div>
+              <div class="rate__info-item rate__info-price">
+                <span class="rate__info-price--bold"> 1500с в месяц </span>
+              </div>
+              <ul class="rate__info-more">
+                <li class="rate__info-list-item">
+                  Скорость по зоне МИР до
+                  150 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Скорость по зоне KG до
+                  150 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Тарифный план предоставляется только для физических лиц;
+                </li>
+                <li class="rate__info-list-item">
+                  Условия оплаты – предоплата;
+                </li>
+                <li>
+                  <button class="button" onclick="openPopup('Тариф 1')">Подключиться</button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <ul class="rate-group__list">
+          <br>
+          <li class="rate-group__item rate">
+            <h3 class="rate__title">
+              <span> СТАНДАРТ </span>
+            </h3>
+            <div class="rate__info" style="padding-left: 50px; padding-right: 50px; padding-top: 10px">
+              <div class="rate__info-item">
+                <img src="css/internet_speed.svg" height="50px" width="50px">
+                <span> до 100 Мбит/с </span>
+              </div>
+              <div class="rate__info-item">
+                <img src="css/tv.svg" height="50px" width="50px">
+                <span> более 100 TV-каналов </span>
+              </div>
+              <div class="rate__info-item rate__info-price">
+                <span class="rate__info-price--bold"> 1000с в месяц </span>
+              </div>
+              <ul class="rate__info-more">
+                <li class="rate__info-list-item">
+                  Скорость по зоне МИР до
+                  100 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Скорость по зоне KG до
+                  100 Мбит/с;
+                </li>
+                <li class="rate__info-list-item">
+                  Тарифный план предоставляется только для физических лиц;
+                </li>
+                <li class="rate__info-list-item">
+                  Условия оплаты – предоплата;
+                </li>
+                <li>
+                  <button class="button" onclick="openPopup('Тариф 1')">Подключиться</button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <br>
+      
+      <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+      <div class="feedback">
+        <h1>Форма обратной связи</h1> <br>
+        <p> Для нас очень важно Ваше мнение, мы рассматриваем каждый вопрос клиента.
+          Заполнив данную форму, Вы можете внести предложение, написать жалобу, получить необходимую информацию.</p>
+      <form action="submit.php" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <input type="submit" value="Отправить">
+      </form>
+      </div>
+
+      <div class="additional">
+        <p> 1. Цены указаны с учётом всех налогов.</p>
+        <p> 2. Тарифные планы доступны для подключения только физическим лицам. </p>
+        <p> 3. Тарифные планы для с. Милянфан, могут отличаться от указанных на сайте. </p>
+        <p> 4. Услуги связи по Тарифной линейке оказываются на условиях предоплаты. Оплаченный период Тарифного плана составляет один календарный месяц 
+          (с 1-го числа расчётного месяца по крайний день календарного месяца).</p>
+        <p> 5. Стоимость подключения в зоне охвата — БЕСПЛАТНО (кроме с. Милянфан, Ала-Тоо 3 и ж/м «Ак-Ордо».), 
+          вне  зоны охвата — стоимость рассчитывается в индивидуальном порядке, согласно действующему тарифу на подключение.</p>
+        <p> 6.При недостаточности имеющихся или внесённых денежных средств на лицевой счёт для списания Абонентской платы в полном размере с учётом стоимости 
+          дополнительно подключённых услуг — доступ к Интернет+ТВ, в рамках тарифного плана, не предоставляется.</p>
+          <p> 7.Подробности о переходе на данный тарифный план, вы можете уточнить в нашем круглосуточном Контакт-Центре.</p>
+          <p> 8.Стоимость перехода с более дорогого Тарифного плана — 100 сом, c более дешёвых — бесплатно.</p>
+      </div>
+
+      <footer class="footer">
+        <div class="contact-info">
+          <p>Phone: 123-456-789</p>
+          <p>Email: info@example.com</p>
+        </div>
+        <ul class="social-icons">
+          <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </footer>
+      
+
+      <script>
+        var carouselContainer = document.querySelector('.carousel-container');
+    var slideIndex = 0;
+    var slideWidth = carouselContainer.offsetWidth / 3;
+
+    // Функция для автоматической прокрутки карусели
+    function autoSlide() {
+      slideIndex++;
+      if (slideIndex >= 3) {
+        slideIndex = 0;
+      }
+      carouselContainer.style.transform = 'translateX(' + (-slideIndex * slideWidth) + 'px)';
+    }
+
+    setInterval(autoSlide, 3000); // Прокручивать каждые 3 секунды
+
+    // Функции для ручного перемещения по карусели
+    function prevSlide() {
+      slideIndex--;
+      if (slideIndex < 0) {
+        slideIndex = 2;
+      }
+      carouselContainer.style.transform = 'translateX(' + (-slideIndex * slideWidth) + 'px)';
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      if (slideIndex >= 3) {
+        slideIndex = 0;
+      }
+      carouselContainer.style.transform = 'translateX(' + (-slideIndex * slideWidth) + 'px)';
+    }
+
+        function openPopup() {
+          var popup = document.getElementById('popup');
+          popup.style.display = 'block';
+        }
+
+        function closePopup() {
+          var popup = document.getElementById('popup');
+          popup.style.display = 'none';
+        }
+
+      </script>
+
+  </body>
+
+</html>

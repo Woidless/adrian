@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+from django.contrib import admin
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     # регистрация
@@ -9,4 +11,8 @@ urlpatterns = [
     # логин и логаут
     path('login/', views.LoginView.as_view()),
     path('logout/', views.LogoutView.as_view()),
+
+
+    # 6
+    path('', views.index),
 ]

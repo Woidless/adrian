@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <title>Страница авторизации</title>
+  <style>
+    /* Styles for the header */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .contact-details {
+      text-align: right;
+    }
+
+    .contact-details p {
+      margin: 5px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .contact-info {
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .register-link a {
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>Speedrun</h1>
+      <div class="contact-details">
+        <p>Contact us:</p>
+        <p>Email: info@example.com</p>
+        <p>Phone: 123-456-7890</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Вход</h2>
+    <form action="cabinet" method="post" id="loginForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <input type="submit" value="Войти" class="btn">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "123") {
+        // Redirect to cabinet.html
+        window.location.assign("cabinet.html");
+      } else {
+        // Prevent form submission
+        event.preventDefault();
+        alert("Неправильный логин или пароль!");
+      }
+    });
+  </script>
+</body>
+
+</html>
